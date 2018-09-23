@@ -10,13 +10,11 @@ public class Wiggle : MonoBehaviour {
     float phase;
     Quaternion baseRot;
 
-	// Use this for initialization
 	void Start () {
         baseRot = transform.localRotation;
         phase = Random.value;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         transform.localRotation = baseRot * Quaternion.Euler(
             Mathf.PerlinNoise(0, speed * Time.time + phase) * amp,

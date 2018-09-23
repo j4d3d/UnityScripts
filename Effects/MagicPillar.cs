@@ -30,14 +30,12 @@ public class MagicPillar : MonoBehaviour {
         }
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
         vis = false;
-		for (int i=0; i<children.Length; i++)
-        {
+		for (int i=0; i<children.Length; i++) {
             if (renderers[i].isVisible) {
                 vis = true;
-                //Debug.Log("visi: " + Random.value);
                 break;
             }
         }

@@ -2,23 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Attaches capsule colliders to all parts of armature that don't have names starting with "x_"
+Tip bones (such as head, feet, fingertips, etc.) will not be measurable due to the way .blend 
+files are imported, so I usually extrude an extra bone for each tip */
+
 public class Ragdollifier : MonoBehaviour {
 
     public float capsuleRadius = 0.5f;
     public float jointSpring = 1f;
     public float totalMass = 1f;
-	// Use this for initialization
+	
 	void Start () {
         attachChildren(transform);
         // calculate and assign mass
         Rigidbody[] bodies = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody body in bodies) body.mass = totalMass / bodies.Length;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void attachChildren(Transform parent)
     {
@@ -38,8 +37,8 @@ public class Ragdollifier : MonoBehaviour {
             cj.angularXDrive = cj.angularYZDrive = jd;
             cj.connectedBody = parentBody;
 
-            // if name starts with 'x', no capsule collider!
-            if (!child.name.StartsWith("x"))
+            // if name starts with 'x_', no capsule collider!
+            if (!child.name.StartsWith("x_"))
             {
                 if (child.childCount > 0)
                 {

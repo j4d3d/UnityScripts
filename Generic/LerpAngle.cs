@@ -6,15 +6,8 @@ public class LerpAngle : MonoBehaviour {
 
     public float lerp = 1f;
     public Transform target;
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+    
+    void Update() {
         transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, lerp * Time.deltaTime);
     }
 }

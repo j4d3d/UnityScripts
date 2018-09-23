@@ -15,18 +15,16 @@ public class Walker : MonoBehaviour {
     public float stepForce = 300f;
     public float footWeight = 200f;
     public float minDist = 3f;
-    Schwing schwing;
     // leave at -1 to not set anything
     public float setDrag = -1f;
     public float setSpring = -1f;
 
-    float phase;// = Random.value * Mathf.PI * 2;
+    float phase;
 
     public float stepSpeed = 1;
-	// Use this for initialization
+	
 	void Start () {
-        schwing = GameObject.Find("Schwing").GetComponent<Schwing>();
-        if (schwing != null && target == null) target = schwing.transform;
+
         phase = Random.value * Mathf.PI * 2;
 
         if (setDrag != -1)
@@ -54,7 +52,7 @@ public class Walker : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate () {
         head.AddForce(Vector3.up * Time.fixedDeltaTime * buoyancy);
 
@@ -68,11 +66,7 @@ public class Walker : MonoBehaviour {
         dir.y = 0; 
         float dist = dir.magnitude;
         dir = dir.normalized;
-        float ang = Mathf.Atan2(dir.y, dir.x);
-        //ang += Mathf.Sin(Time.time + phase * angSpeed) * angAmp/180*Mathf.PI;
-        //dir = new Vector3(Mathf.Cos(ang), 0, Mathf.Sin(ang));
 
         if (dist > minDist) head.AddForce(dir * Time.fixedDeltaTime * speed);
-        //Debug.Log(dir * Time.fixedDeltaTime * speed);
     }
 }

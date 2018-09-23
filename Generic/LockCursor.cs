@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Lock and hide cursor on Start(), 'Escape' to unlock and mouse click to re-lock */
 public class LockCursor : MonoBehaviour {
 
     bool locked = false;
-	// Use this for initialization
+	
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown("Cancel")) {
             Cursor.lockState = CursorLockMode.None;

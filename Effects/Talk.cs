@@ -13,7 +13,6 @@ public class Talk : MonoBehaviour {
 
     float lvol = 0;
 
-
 	void Start () {
         baseRot = transform.localRotation.eulerAngles;
 	}

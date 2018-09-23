@@ -35,7 +35,6 @@ public class CollisionSound : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        //lmag = Mathf.Sqrt(body.velocity.magnitude);
         lmag = other.relativeVelocity.magnitude;
 
         if (asrc != null)
@@ -46,10 +45,8 @@ public class CollisionSound : MonoBehaviour {
                 asrc.pitch = minPitch + (1 - 1 / (1 + (lmag * pitchMod))) * pitchRange;
                 asrc.Play();
             }
-            asrc.volume = signal;// (hitvol > signal) ? hitvol : signal;
+            asrc.volume = signal;
 
         }
-
-
     }
 }
